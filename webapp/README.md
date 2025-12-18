@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# FP Teori Graf
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_The Knight's Tour dan Largest Monotonically Increasing Subsequence (LMIS)_
 
-## Available Scripts
+## Deskripsi Masalah
 
-In the project directory, you can run:
+Program ini dikembangkan untuk memvisualisasikan dua permasalahan algoritma klasik menggunakan pendekatan _Teori Graf_:
 
-### `npm start`
+### 1. The Knight's Tour (Perjalanan Kuda)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Permasalahan Knight's Tour adalah mencari urutan langkah Kuda pada papan catur sedemikian rupa sehingga setiap kotak dikunjungi _tepat satu kali_.
+Dalam teori graf, masalah ini ekuivalen dengan pencarian _Hamiltonian Path_ pada graf yang merepresentasikan langkah legal Kuda.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Largest Monotonically Increasing Subsequence (LMIS)
 
-### `npm test`
+Permasalahan LMIS adalah mencari _subsekuens terpanjang_ dari suatu deret bilangan yang tersusun secara menaik.
+Program ini memvisualisasikan proses pencarian solusi menggunakan struktur _Tree_, di mana:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node merepresentasikan elemen yang dipilih
+- Edge merepresentasikan transisi ke elemen berikutnya yang valid (bernilai lebih besar)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tujuan Program
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Program ini dibuat untuk:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Memvisualisasikan algoritma secara interaktif dan real-time.
+2. Menunjukkan representasi graf dari langkah-langkah algoritma.
+3. Membantu analisis kompleksitas serta jalur solusi yang diambil algoritma.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Algoritma yang Digunakan
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### The Knight's Tour
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Menggunakan algoritma _Backtracking_ yang dioptimasi dengan _Warnsdorff's Rule_:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Kuda selalu memilih langkah ke kotak dengan jumlah langkah lanjutan paling sedikit (minimum degree).
+- Heuristik ini efektif mengurangi backtracking dan mempercepat pencarian solusi.
 
-## Learn More
+### LMIS (Tree Approach)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Masalah LMIS diselesaikan dengan pendekatan _decision tree_:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Root merepresentasikan awal sekuens.
+- Edge menghubungkan indeks i ke j dengan syarat i < j dan arr[i] < arr[j].
+- Solusi adalah _path terpanjang_ dari root ke leaf.
+- Kompleksitas waktu bergantung pada jumlah node dan cabang valid yang dibangkitkan.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Fitur Program
 
-### Analyzing the Bundle Size
+### Visualisasi Knight's Tour
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Klik papan catur untuk menentukan posisi awal Kuda.
+- Animasi langkah demi langkah.
+- Indikator warna untuk kotak yang telah dikunjungi.
 
-### Making a Progressive Web App
+### Visualisasi LMIS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Input array dinamis dari pengguna.
+- Visualisasi struktur Tree secara rekursif.
+- Highlight jalur solusi optimal (path terpanjang).
+- Statistik kedalaman tree dan total node yang dihasilkan.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Teknologi yang Digunakan
 
-### Deployment
+- _Frontend_: React.js, CSS3
+- _Algoritma_: JavaScript
+- _Struktur Data_: Graph (Adjacency List), Tree
+- _Deployment_: Vercel
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## Cara Mengakses Aplikasi
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Aplikasi telah di-deploy dan dapat diakses langsung melalui browser:
+
+🔗 **[https://k13-praktikum-tegraf.vercel.app/](https://k13-praktikum-tegraf.vercel.app/)**
